@@ -19,10 +19,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "food.better_main_menu.client.BetterMainMenuClient"
+      "mitzingdash.better_main_menu.client.BetterMainMenuClient"
     ],
     "main": [
-      "food.better_main_menu.BetterMainMenu"
+      "mitzingdash.better_main_menu.BetterMainMenu"
     ]
   },
   "jars": [ { "file":"${project.mod_jar_tcdcommons}" } ],
