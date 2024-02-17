@@ -6,6 +6,7 @@ import io.github.thecsdev.tcdcommons.api.client.gui.layout.UIListLayout;
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TFillColorElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
+import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.Axis2D;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
@@ -16,7 +17,9 @@ import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
+import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 
 public class BmmScreen extends TScreenPlus {
 
@@ -72,12 +75,20 @@ public class BmmScreen extends TScreenPlus {
 		new UIListLayout(Axis2D.Y, VerticalAlignment.CENTER, HorizontalAlignment.CENTER, 2).apply(button_panel);
 		
 		var btn_quit = new TButtonWidget(panel.getWidth()-25, panel.getHeight()-25, 20, 20);
-		btn_quit.setText(Text.literal("X"));
+		btn_quit.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/x_white.png")));
 		btn_quit.setTooltip(Tooltip.of(Text.translatable("menu.quit")));
 		btn_quit.setOnClick(__ -> {
 			getClient().scheduleStop();
 		});
 		panel.addChild(btn_quit);
+		
+		var realms = new TButtonWidget(panel.getWidth()-50, panel.getHeight()-25, 20, 20);
+		realms.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/realms_white.png")));
+		realms.setTooltip(Tooltip.of(Text.translatable("menu.online")));
+		realms.setOnClick(__ -> {
+			getClient().setScreen(new RealmsMainScreen(getAsScreen()));
+		});
+		panel.addChild(realms);
 		
 	}
 
