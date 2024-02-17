@@ -27,8 +27,6 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 
-
-    modApi "curse.maven:betterstats-667464:5076601"
    	modApi(files("src/main/resources/${project.mod_jar_tcdcommons}"))
 
     modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
