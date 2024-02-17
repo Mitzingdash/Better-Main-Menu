@@ -11,8 +11,10 @@
     "TheCSDev"
   ],
   "contact": {
-    "website": "",
     "repo": "https://github.com/slove/Better Main Menu"
+    "homepage": "https://github.com/Mitzingdash",
+    "sources": "https://github.com/Mitzingdash/Better-Main-Menu",
+    "issues": "https://github.com/Mitzingdash/Better-Main-Menu/issues"
   },
   "license": "MIT",
   "icon": "assets/better_main_menu/icon.png",
