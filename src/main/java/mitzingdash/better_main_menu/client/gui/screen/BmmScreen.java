@@ -23,6 +23,7 @@ import net.minecraft.util.Identifier;
 
 public class BmmScreen extends TScreenPlus {
 
+	public static final UITexture TEX_BACKGROUND = new UITexture(new Identifier("better_main_menu", "textures/gui/background.png"));
 	public BmmScreen() {
 		super(Text.translatable("narrator.screen.title"));
 		// TODO Auto-generated constructor stub
@@ -95,7 +96,7 @@ public class BmmScreen extends TScreenPlus {
 	@Override
 	public void renderBackground(TDrawContext pencil) {
 		// TODO Auto-generated method stub
-		pencil.drawTFill(0xff0b6b00);
+		TEX_BACKGROUND.drawTexture(pencil, 0, 0, getWidth(), getHeight());
 	}
 	
 	
