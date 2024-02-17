@@ -1,5 +1,7 @@
 package mitzingdash.better_main_menu;
 
-public class BetterMainMenu {
+import net.fabricmc.api.ModInitializer;
+
+public class BetterMainMenu implements ModInitializer {
 	
 }
