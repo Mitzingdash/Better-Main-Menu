@@ -4,6 +4,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 
 import io.github.thecsdev.tcdcommons.api.client.gui.layout.UIListLayout;
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TFillColorElement;
+import io.github.thecsdev.tcdcommons.api.client.gui.other.TTextureElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
@@ -24,6 +25,7 @@ import net.minecraft.util.Identifier;
 public class BmmScreen extends TScreenPlus {
 
 	public static final UITexture TEX_BACKGROUND = new UITexture(new Identifier("better_main_menu", "textures/gui/background.png"));
+	
 	public BmmScreen() {
 		super(Text.translatable("narrator.screen.title"));
 		// TODO Auto-generated constructor stub
@@ -37,7 +39,11 @@ public class BmmScreen extends TScreenPlus {
 		panel.setColor(0x77000000);
 		addChild(panel);
 		
-		var button_panel = new TFillColorElement(0, panel.getHeight()/2-50, panel.getWidth(), 100);
+		var logo = new TTextureElement(10, 5, 80, 80);
+		logo.setTexture(new UITexture(new Identifier("better_main_menu", "textures/gui/logo.png")));
+		panel.addChild(logo);
+		
+		var button_panel = new TFillColorElement(0, panel.getHeight()/2-40, panel.getWidth(), 100);
 		button_panel.setColor(0x00000000);
 		panel.addChild(button_panel);
 		
