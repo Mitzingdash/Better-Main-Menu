@@ -1,12 +1,20 @@
 {
   "schemaVersion": 1,
   "id": "better_main_menu",
-  "version": "${version}",
+  "version": "${project.mod_version}",
   "name": "Better Main Menu",
-  "description": "",
-  "authors": [],
+  "description": "A mod that enhances the main menu",
+  "authors": [
+    "Mitzingdash"
+  ],
+  "contributors": [
+    "TheCSDev"
+  ],
   "contact": {
-    "repo": "https://github.com/slove/Better Main Menu"
+    "repo": "https://github.com/slove/Better Main Menu",
+    "homepage": "https://github.com/Mitzingdash",
+    "sources": "https://github.com/Mitzingdash/Better-Main-Menu",
+    "issues": "https://github.com/Mitzingdash/Better-Main-Menu/issues"
   },
   "license": "MIT",
   "icon": "assets/better_main_menu/icon.png",
@@ -19,9 +27,10 @@
       "mitzingdash.better_main_menu.BetterMainMenu"
     ]
   },
+  "jars": [ { "file":"${project.mod_jar_tcdcommons}" } ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=${project.loader_version}",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${project.minecraft_version}"
   }
 }
