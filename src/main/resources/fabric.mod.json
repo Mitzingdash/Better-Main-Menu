@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "better_main_menu",
+  "version": "${version}",
+  "name": "Better Main Menu",
+  "description": "A mod that enhances the whole main menu",
+  "authors": [
+    "Mitzingdash"
+  ],
+  "contact": {
+    "website": "null",
+    "repo": "https://github.com/slove/Better Main Menu"
+  },
+  "license": "MIT",
+  "icon": "assets/better_main_menu/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "food.better_main_menu.client.BetterMainMenuClient"
+    ],
+    "main": [
+      "food.better_main_menu.BetterMainMenu"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
