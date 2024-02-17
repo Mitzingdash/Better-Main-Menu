@@ -1,11 +1,14 @@
 {
   "schemaVersion": 1,
   "id": "better_main_menu",
-  "version": "${version}",
+  "version": "${project.mod_version}",
   "name": "Better Main Menu",
   "description": "A mod that enhances the whole main menu",
   "authors": [
     "Mitzingdash"
+  ],
+  "contributors": [
+    "TheCSDev"
   ],
   "contact": {
     "website": "null",
@@ -22,9 +25,10 @@
       "food.better_main_menu.BetterMainMenu"
     ]
   },
+  "jars": [ { "file":"${project.mod_jar_tcdcommons}" } ],
   "depends": {
-    "fabricloader": ">=${loader_version}",
+    "fabricloader": ">=${project.loader_version}",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${project.minecraft_version}"
   }
 }
