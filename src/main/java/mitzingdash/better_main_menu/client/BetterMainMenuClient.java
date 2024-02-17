@@ -5,7 +5,7 @@ import net.fabricmc.api.ClientModInitializer;
 public class BetterMainMenuClient implements ClientModInitializer {
 	@Override
     public void onInitializeClient() {
-    	//check if "Better Statistics Screen" is installed
+    	
 		
 	}
 	
