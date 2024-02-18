@@ -4,8 +4,10 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 
 import io.github.thecsdev.tcdcommons.api.client.gui.layout.UIListLayout;
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TFillColorElement;
+import io.github.thecsdev.tcdcommons.api.client.gui.other.TLabelElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TTextureElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
+import io.github.thecsdev.tcdcommons.api.client.gui.util.GuiUtils;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
@@ -20,7 +22,9 @@ import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 
 public class BmmScreen extends TScreenPlus {
 
@@ -97,6 +101,28 @@ public class BmmScreen extends TScreenPlus {
 		});
 		panel.addChild(realms);
 		
+		var credits = new TLabelElement(5, getHeight()-10, 50, 5, Text.literal("Main Menu made by Mitzingdash").formatted(Formatting.GREEN));
+		addChild(credits);
+		
+		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Follow for updates").formatted(Formatting.GOLD));
+		addChild(txt_social);
+		
+		var github = new TButtonWidget(5, getHeight()-45, 20, 20);
+		github.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/github.png")));
+		github.setTooltip(Tooltip.of(Text.literal("My Github")));
+		github.setOnClick(__ -> {
+			GuiUtils.showUrlPrompt("https://github.com/Mitzingdash", true);
+		});
+		addChild(github);
+		
+		var ko_fi = new TButtonWidget(27, getHeight()-45, 20, 20);
+		ko_fi.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/ko_fi.png")));
+		ko_fi.setTooltip(Tooltip.of(Text.literal("Donate to support me!")));
+		ko_fi.setOnClick(__ -> {
+			GuiUtils.showUrlPrompt("https://ko-fi.com/mitzingdash", true);
+		});
+		addChild(ko_fi);
+		
 	}
 
 	@Override
@@ -106,5 +132,4 @@ public class BmmScreen extends TScreenPlus {
 	}
 	
 	
-
 }
