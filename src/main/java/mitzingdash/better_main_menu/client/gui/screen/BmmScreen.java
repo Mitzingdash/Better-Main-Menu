@@ -127,7 +127,7 @@ public class BmmScreen extends TScreenPlus {
 		var x = new MButtonWidget(49, getHeight()-45, 20, 20);
 		x.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/x_logo.png")));
 		x.setTooltip(Tooltip.of(Text.literal("Follow on X for updates")));
-		ko_fi.setOnClick(__ -> {
+		x.setOnClick(__ -> {
 			GuiUtils.showUrlPrompt("https://x.com/mitzingdash", true);
 		});
 		addChild(x);
