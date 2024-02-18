@@ -14,6 +14,7 @@ import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.Axis2D;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.VerticalAlignment;
+import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
@@ -51,14 +52,14 @@ public class BmmScreen extends TScreenPlus {
 		button_panel.setColor(0x00000000);
 		panel.addChild(button_panel);
 		
-		var singleplayer = new TButtonWidget(5, 5, 90, 20);
+		var singleplayer = new MButtonWidget(5, 5, 90, 20);
 		singleplayer.setText(Text.translatable("menu.singleplayer"));
 		singleplayer.setOnClick(__ -> {
 			getClient().setScreen(new SelectWorldScreen(getAsScreen()));
 		});
 		button_panel.addChild(singleplayer);
 		
-		var multiplayer = new TButtonWidget(5, 27, 90, 20);
+		var multiplayer = new MButtonWidget(5, 27, 90, 20);
 		multiplayer.setText(Text.translatable("menu.multiplayer"));
 		multiplayer.setOnClick(__ -> {
 			final boolean smw = getClient().options.skipMultiplayerWarning;
@@ -67,7 +68,7 @@ public class BmmScreen extends TScreenPlus {
 		});
 		button_panel.addChild(multiplayer);
 		
-		var options = new TButtonWidget(5, 49, 90, 20);
+		var options = new MButtonWidget(5, 49, 90, 20);
 		options.setText(Text.translatable("menu.options"));
 		options.setOnClick(__ -> {
 			getClient().setScreen(new OptionsScreen(getAsScreen(), getClient().options));
@@ -75,7 +76,7 @@ public class BmmScreen extends TScreenPlus {
 		button_panel.addChild(options);
 		
 		if(FabricLoader.getInstance().isModLoaded("modmenu")) {
-			var mod_btn = new TButtonWidget(0, 0, 90, 20);
+			var mod_btn = new MButtonWidget(0, 0, 90, 20);
 			mod_btn.setText(Text.translatable("modmenu.title"));
 			mod_btn.setOnClick(__ -> {
 				getClient().setScreen(ModMenuApi.createModsScreen(getAsScreen()));
@@ -85,16 +86,16 @@ public class BmmScreen extends TScreenPlus {
 		
 		new UIListLayout(Axis2D.Y, VerticalAlignment.CENTER, HorizontalAlignment.CENTER, 2).apply(button_panel);
 		
-		var btn_quit = new TButtonWidget(panel.getWidth()-25, panel.getHeight()-25, 20, 20);
-		btn_quit.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/x_white.png")));
+		var btn_quit = new MButtonWidget(panel.getWidth()-25, panel.getHeight()-25, 20, 20);
+		btn_quit.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/quit.png")));
 		btn_quit.setTooltip(Tooltip.of(Text.translatable("menu.quit")));
 		btn_quit.setOnClick(__ -> {
 			getClient().scheduleStop();
 		});
 		panel.addChild(btn_quit);
 		
-		var realms = new TButtonWidget(panel.getWidth()-50, panel.getHeight()-25, 20, 20);
-		realms.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/realms_white.png")));
+		var realms = new MButtonWidget(panel.getWidth()-50, panel.getHeight()-25, 20, 20);
+		realms.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/realms.png")));
 		realms.setTooltip(Tooltip.of(Text.translatable("menu.online")));
 		realms.setOnClick(__ -> {
 			getClient().setScreen(new RealmsMainScreen(getAsScreen()));
@@ -107,7 +108,7 @@ public class BmmScreen extends TScreenPlus {
 		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Follow for updates").formatted(Formatting.GOLD));
 		addChild(txt_social);
 		
-		var github = new TButtonWidget(5, getHeight()-45, 20, 20);
+		var github = new MButtonWidget(5, getHeight()-45, 20, 20);
 		github.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/github.png")));
 		github.setTooltip(Tooltip.of(Text.literal("My Github")));
 		github.setOnClick(__ -> {
@@ -115,7 +116,7 @@ public class BmmScreen extends TScreenPlus {
 		});
 		addChild(github);
 		
-		var ko_fi = new TButtonWidget(27, getHeight()-45, 20, 20);
+		var ko_fi = new MButtonWidget(27, getHeight()-45, 20, 20);
 		ko_fi.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/ko_fi.png")));
 		ko_fi.setTooltip(Tooltip.of(Text.literal("Donate to support me!")));
 		ko_fi.setOnClick(__ -> {
