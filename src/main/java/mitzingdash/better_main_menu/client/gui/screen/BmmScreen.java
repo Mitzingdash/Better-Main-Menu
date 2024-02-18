@@ -105,7 +105,7 @@ public class BmmScreen extends TScreenPlus {
 		var credits = new TLabelElement(5, getHeight()-10, 50, 5, Text.literal("Main Menu made by Mitzingdash").formatted(Formatting.GREEN));
 		addChild(credits);
 		
-		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Follow for updates").formatted(Formatting.GOLD));
+		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Follow me for updates").formatted(Formatting.GOLD));
 		addChild(txt_social);
 		
 		var github = new MButtonWidget(5, getHeight()-45, 20, 20);
@@ -123,6 +123,14 @@ public class BmmScreen extends TScreenPlus {
 			GuiUtils.showUrlPrompt("https://ko-fi.com/mitzingdash", true);
 		});
 		addChild(ko_fi);
+		
+		var x = new MButtonWidget(49, getHeight()-45, 20, 20);
+		x.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/x_logo.png")));
+		x.setTooltip(Tooltip.of(Text.literal("Follow on X for updates")));
+		ko_fi.setOnClick(__ -> {
+			GuiUtils.showUrlPrompt("https://x.com/mitzingdash", true);
+		});
+		addChild(x);
 		
 	}
 
