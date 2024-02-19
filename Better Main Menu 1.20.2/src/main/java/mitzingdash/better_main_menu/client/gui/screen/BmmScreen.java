@@ -122,7 +122,7 @@ public class BmmScreen extends TScreenPlus {
 		});
 		panel.addChild(realms);
 		
-		var credits = new CreditButtonWidget(5, getHeight()-12, 151, 10);
+		var credits = new CreditButtonWidget(5, getHeight()-12, 152, 10);
 		credits.setText(Text.literal("Main Menu made by Mitzingdash").formatted(Formatting.GREEN));
 		credits.setOnClick(__ -> {
 			GuiUtils.showUrlPrompt("https://github.com/Mitzingdash", true);
