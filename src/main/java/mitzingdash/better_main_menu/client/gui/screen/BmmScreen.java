@@ -14,6 +14,7 @@ import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.Axis2D;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.VerticalAlignment;
+import mitzingdash.better_main_menu.client.gui.widget.CreditButtonWidget;
 import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
@@ -99,7 +100,7 @@ public class BmmScreen extends TScreenPlus {
 		
 		var accesibility = new MButtonWidget(panel.getWidth()-73, panel.getHeight()-25, 20, 20);
 		accesibility.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/accessibility.png")));
-		accesibility.setTooltip(Tooltip.of(Text.translatable("menu.accesibility")));
+		accesibility.setTooltip(Tooltip.of(Text.translatable("narrator.button.accessibility")));
 		accesibility.setOnClick(__ -> {
 			getClient().setScreen(new AccessibilityOptionsScreen(getAsScreen(), getClient().options));
 		});
@@ -107,9 +108,9 @@ public class BmmScreen extends TScreenPlus {
 		
 		var language = new MButtonWidget(5, panel.getHeight()-25, 20, 20);
 		language.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/language.png")));
-		language.setTooltip(Tooltip.of(Text.translatable("menu.language")));
+		language.setTooltip(Tooltip.of(Text.translatable("narrator.button.language")));
 		language.setOnClick(__ -> {
-			getClient().setScreen(new LanguageOptionsScreen(getAsScreen(), getClient().options, null));
+			getClient().setScreen(new LanguageOptionsScreen(getAsScreen(), getClient().options, getClient().getLanguageManager()));
 		});
 		panel.addChild(language);
 		
@@ -121,19 +122,20 @@ public class BmmScreen extends TScreenPlus {
 		});
 		panel.addChild(realms);
 		
-		var credits = new TLabelElement(5, getHeight()-10, 50, 5, Text.literal("Main Menu made by Mitzingdash").formatted(Formatting.GREEN));
+		var credits = new CreditButtonWidget(5, getHeight()-12, 150, 10);
+		credits.setText(Text.literal("Main Menu made by Mitzingdash").formatted(Formatting.GREEN));
 		addChild(credits);
 		
 		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Not affiliated with mojang").formatted(Formatting.GOLD));
 		addChild(txt_social);
 		
-		var github = new MButtonWidget(5, getHeight()-45, 20, 20);
-		github.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/github.png")));
-		github.setTooltip(Tooltip.of(Text.literal("My Github")));
-		github.setOnClick(__ -> {
+		var settings = new MButtonWidget(5, getHeight()-45, 20, 20);
+		settings.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/settings.png")));
+		settings.setTooltip(Tooltip.of(Text.literal("Bmm Settings")));
+		settings.setOnClick(__ -> {
 			GuiUtils.showUrlPrompt("https://github.com/Mitzingdash", true);
 		});
-		addChild(github);
+		addChild(settings);
 		
 		
 	}
