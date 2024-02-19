@@ -18,10 +18,13 @@ import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
+import net.minecraft.client.gui.screen.option.AccessibilityOptionsScreen;
+import net.minecraft.client.gui.screen.option.LanguageOptionsScreen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
+import net.minecraft.client.resource.language.LanguageManager;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -86,16 +89,32 @@ public class BmmScreen extends TScreenPlus {
 		
 		new UIListLayout(Axis2D.Y, VerticalAlignment.CENTER, HorizontalAlignment.CENTER, 2).apply(button_panel);
 		
-		var btn_quit = new MButtonWidget(panel.getWidth()-25, panel.getHeight()-25, 20, 20);
-		btn_quit.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/quit.png")));
+		var btn_quit = new MButtonWidget(panel.getWidth()-50, panel.getHeight()-25, 45, 20);
+		btn_quit.setText(Text.literal("Quit"));
 		btn_quit.setTooltip(Tooltip.of(Text.translatable("menu.quit")));
 		btn_quit.setOnClick(__ -> {
 			getClient().scheduleStop();
 		});
 		panel.addChild(btn_quit);
 		
-		var realms = new MButtonWidget(panel.getWidth()-50, panel.getHeight()-25, 20, 20);
-		realms.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/realms.png")));
+		var accesibility = new MButtonWidget(panel.getWidth()-73, panel.getHeight()-25, 20, 20);
+		accesibility.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/accessibility.png")));
+		accesibility.setTooltip(Tooltip.of(Text.translatable("menu.accesibility")));
+		accesibility.setOnClick(__ -> {
+			getClient().setScreen(new AccessibilityOptionsScreen(getAsScreen(), getClient().options));
+		});
+		panel.addChild(accesibility);
+		
+		var language = new MButtonWidget(5, panel.getHeight()-25, 20, 20);
+		language.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/language.png")));
+		language.setTooltip(Tooltip.of(Text.translatable("menu.language")));
+		language.setOnClick(__ -> {
+			getClient().setScreen(new LanguageOptionsScreen(getAsScreen(), getClient().options, null));
+		});
+		panel.addChild(language);
+		
+		var realms = new MButtonWidget(panel.getWidth()-50, panel.getHeight()-48, 45, 20);
+		realms.setText(Text.literal("Realms"));
 		realms.setTooltip(Tooltip.of(Text.translatable("menu.online")));
 		realms.setOnClick(__ -> {
 			getClient().setScreen(new RealmsMainScreen(getAsScreen()));
@@ -105,7 +124,7 @@ public class BmmScreen extends TScreenPlus {
 		var credits = new TLabelElement(5, getHeight()-10, 50, 5, Text.literal("Main Menu made by Mitzingdash").formatted(Formatting.GREEN));
 		addChild(credits);
 		
-		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Follow me for updates").formatted(Formatting.GOLD));
+		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Not affiliated with mojang").formatted(Formatting.GOLD));
 		addChild(txt_social);
 		
 		var github = new MButtonWidget(5, getHeight()-45, 20, 20);
@@ -116,21 +135,6 @@ public class BmmScreen extends TScreenPlus {
 		});
 		addChild(github);
 		
-		var ko_fi = new MButtonWidget(27, getHeight()-45, 20, 20);
-		ko_fi.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/ko_fi.png")));
-		ko_fi.setTooltip(Tooltip.of(Text.literal("Donate to support me!")));
-		ko_fi.setOnClick(__ -> {
-			GuiUtils.showUrlPrompt("https://ko-fi.com/mitzingdash", true);
-		});
-		addChild(ko_fi);
-		
-		var x = new MButtonWidget(49, getHeight()-45, 20, 20);
-		x.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/x_logo.png")));
-		x.setTooltip(Tooltip.of(Text.literal("Follow on X for updates")));
-		x.setOnClick(__ -> {
-			GuiUtils.showUrlPrompt("https://x.com/mitzingdash", true);
-		});
-		addChild(x);
 		
 	}
 
