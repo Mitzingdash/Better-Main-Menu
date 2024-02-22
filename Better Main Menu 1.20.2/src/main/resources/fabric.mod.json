@@ -32,7 +32,7 @@
   ],
   "jars": [ { "file":"${project.mod_jar_tcdcommons}" } ],
   "depends": {
-    "fabricloader": ">=${project.loader_version}",
+    "fabricloader": "*",
     "fabric": "*",
     "minecraft": "${project.minecraft_version}"
   }
