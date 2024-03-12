@@ -10,7 +10,6 @@ import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.GuiUtils;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
-import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.Axis2D;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.VerticalAlignment;
@@ -25,15 +24,14 @@ import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
-import net.minecraft.client.resource.language.LanguageManager;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
+
 
 public class BmmScreen extends TScreenPlus {
 
-	public static final UITexture TEX_BACKGROUND = new UITexture(new Identifier("better_main_menu", "textures/gui/background.png"));
+	public static final UITexture TEX_BACKGROUND = new UITexture(new Identifier("better_main_menu", "textures/gui/backgrounds/valley.png"));
 	
 	public BmmScreen() {
 		super(Text.translatable("narrator.screen.title"));
@@ -49,7 +47,7 @@ public class BmmScreen extends TScreenPlus {
 		addChild(panel);
 		
 		var logo = new TTextureElement(10, 5, 80, 80);
-		logo.setTexture(new UITexture(new Identifier("better_main_menu", "textures/gui/logo.png")));
+		logo.setTexture(new UITexture(new Identifier("better_main_menu", "textures/gui/icons/logo.png")));
 		panel.addChild(logo);
 		
 		var button_panel = new TFillColorElement(0, panel.getHeight()/2-40, panel.getWidth(), 100);
