@@ -13,6 +13,7 @@ import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.Axis2D;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.VerticalAlignment;
+import mitzingdash.better_main_menu.BetterMainMenu;
 import mitzingdash.better_main_menu.client.gui.widget.CreditButtonWidget;
 import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.fabricmc.loader.api.FabricLoader;
@@ -31,7 +32,7 @@ import net.minecraft.util.Identifier;
 
 public class BmmScreen extends TScreenPlus {
 
-	public static final UITexture TEX_BACKGROUND = new UITexture(new Identifier("better_main_menu", "textures/gui/backgrounds/valley.png"));
+	public UITexture TEX_BACKGROUND = null;
 	
 	public BmmScreen() {
 		super(Text.translatable("narrator.screen.title"));
@@ -41,6 +42,7 @@ public class BmmScreen extends TScreenPlus {
 	@SuppressWarnings("resource")
 	@Override
 	protected void init() {
+		TEX_BACKGROUND = new UITexture(new Identifier(BetterMainMenu.CONFIG.btid));
 		
 		var panel = new TFillColorElement(getWidth()-100, 0, 100, getHeight());
 		panel.setColor(0x77000000);
@@ -144,6 +146,7 @@ public class BmmScreen extends TScreenPlus {
 	@Override
 	public void renderBackground(TDrawContext pencil) {
 		// TODO Auto-generated method stub
+		if (TEX_BACKGROUND == null) return;
 		TEX_BACKGROUND.drawTexture(pencil, 0, 0, getWidth(), getHeight());
 	}
 	
