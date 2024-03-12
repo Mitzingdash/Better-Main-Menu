@@ -5,8 +5,8 @@ import net.minecraft.text.Text;
 
 public class BmmSettingsScreen extends TScreenPlus {
 
-	public BmmSettingsScreen(Text title) {
-		super(title);
+	public BmmSettingsScreen() {
+		super(Text.translatable("narrator.screen.title"));
 		// TODO Auto-generated constructor stub
 	}
 
