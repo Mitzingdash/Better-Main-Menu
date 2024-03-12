@@ -12,4 +12,5 @@ public class BetterMainMenuConfig extends AutoConfig {
 	}
 
 	public @SerializedAs("background-texture-id") String btid = "better_main_menu:textures/gui/backgrounds/valley.png";
+	public @SerializedAs("main-icon") String logo = "better_main_menu:textures/gui/icons/logo.png";
 }

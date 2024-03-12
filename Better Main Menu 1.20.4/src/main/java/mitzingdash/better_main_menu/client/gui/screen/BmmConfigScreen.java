@@ -3,9 +3,9 @@ package mitzingdash.better_main_menu.client.gui.screen;
 import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
 import net.minecraft.text.Text;
 
-public class BmmSettingsScreen extends TScreenPlus {
+public class BmmConfigScreen extends TScreenPlus {
 
-	public BmmSettingsScreen() {
+	public BmmConfigScreen() {
 		super(Text.translatable("narrator.screen.title"));
 		// TODO Auto-generated constructor stub
 	}

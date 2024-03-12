@@ -43,13 +43,14 @@ public class BmmScreen extends TScreenPlus {
 	@Override
 	protected void init() {
 		TEX_BACKGROUND = new UITexture(new Identifier(BetterMainMenu.CONFIG.btid));
+		var LOGO = new UITexture(new Identifier(BetterMainMenu.CONFIG.logo));
 		
 		var panel = new TFillColorElement(getWidth()-100, 0, 100, getHeight());
 		panel.setColor(0x77000000);
 		addChild(panel);
 		
 		var logo = new TTextureElement(10, 5, 80, 80);
-		logo.setTexture(new UITexture(new Identifier("better_main_menu", "textures/gui/icons/logo.png")));
+		logo.setTexture(LOGO);
 		panel.addChild(logo);
 		
 		var button_panel = new TFillColorElement(0, panel.getHeight()/2-40, panel.getWidth(), 100);
