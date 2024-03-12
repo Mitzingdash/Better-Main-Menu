@@ -20,6 +20,7 @@
   "icon": "assets/better_main_menu/icon.png",
   "environment": "client",
   "entrypoints": {
+  	"modmenu": [ "mitzingdash.better_main_menu.client.gui.screen.BmmConfigScreen" ],
     "client": [
       "mitzingdash.better_main_menu.client.BetterMainMenuClient"
     ],
@@ -27,9 +28,6 @@
       "mitzingdash.better_main_menu.BetterMainMenu"
     ]
   },
-  "mixins": [
-  	"better_main_menu.client.mixin.json"
-  ],
   "jars": [ { "file":"${project.mod_jar_tcdcommons}" } ],
   "depends": {
     "fabricloader": "*",
