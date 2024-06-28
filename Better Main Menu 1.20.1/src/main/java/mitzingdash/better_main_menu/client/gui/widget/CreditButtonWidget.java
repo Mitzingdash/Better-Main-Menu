@@ -4,7 +4,6 @@ import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
 import io.github.thecsdev.tcdcommons.api.util.annotations.Virtual;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
-import net.minecraft.util.Formatting;
 
 public class CreditButtonWidget extends TButtonWidget {
 	

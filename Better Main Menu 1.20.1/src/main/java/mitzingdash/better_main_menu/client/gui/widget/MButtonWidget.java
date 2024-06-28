@@ -1,7 +1,6 @@
 package mitzingdash.better_main_menu.client.gui.widget;
 
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
-import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
 import io.github.thecsdev.tcdcommons.api.util.annotations.Virtual;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;

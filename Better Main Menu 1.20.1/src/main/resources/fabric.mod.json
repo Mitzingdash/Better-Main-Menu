@@ -30,7 +30,6 @@
   "mixins": [
   	"better_main_menu.client.mixin.json"
   ],
-  "jars": [ { "file":"${project.mod_jar_tcdcommons}" } ],
   "depends": {
     "fabricloader": "*",
     "fabric": "*",
