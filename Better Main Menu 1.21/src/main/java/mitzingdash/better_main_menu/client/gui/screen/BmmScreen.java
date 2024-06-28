@@ -42,8 +42,8 @@ public class BmmScreen extends TScreenPlus {
 	@SuppressWarnings("resource")
 	@Override
 	protected void init() {
-		TEX_BACKGROUND = new UITexture(new Identifier(BetterMainMenu.CONFIG.btid));
-		var LOGO = new UITexture(new Identifier(BetterMainMenu.CONFIG.logo));
+		TEX_BACKGROUND = new UITexture(Identifier.of(BetterMainMenu.CONFIG.btid));
+		var LOGO = new UITexture(Identifier.of(BetterMainMenu.CONFIG.logo));
 		
 		var panel = new TFillColorElement(getWidth()-100, 0, 100, getHeight());
 		panel.setColor(0x77000000);
@@ -100,7 +100,7 @@ public class BmmScreen extends TScreenPlus {
 		panel.addChild(btn_quit);
 		
 		var accesibility = new MButtonWidget(panel.getWidth()-73, panel.getHeight()-25, 20, 20);
-		accesibility.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/accessibility.png")));
+		accesibility.setIcon(new UITexture(Identifier.of("better_main_menu", "textures/gui/accessibility.png")));
 		accesibility.setTooltip(Tooltip.of(Text.translatable("narrator.button.accessibility")));
 		accesibility.setOnClick(__ -> {
 			getClient().setScreen(new AccessibilityOptionsScreen(getAsScreen(), getClient().options));
@@ -108,7 +108,7 @@ public class BmmScreen extends TScreenPlus {
 		panel.addChild(accesibility);
 		
 		var language = new MButtonWidget(5, panel.getHeight()-25, 20, 20);
-		language.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/language.png")));
+		language.setIcon(new UITexture(Identifier.of("better_main_menu", "textures/gui/language.png")));
 		language.setTooltip(Tooltip.of(Text.translatable("narrator.button.language")));
 		language.setOnClick(__ -> {
 			getClient().setScreen(new LanguageOptionsScreen(getAsScreen(), getClient().options, getClient().getLanguageManager()));
@@ -134,7 +134,7 @@ public class BmmScreen extends TScreenPlus {
 		addChild(txt_social);
 		
 		var settings = new MButtonWidget(5, getHeight()-45, 20, 20);
-		settings.setIcon(new UITexture(new Identifier("better_main_menu", "textures/gui/settings.png")));
+		settings.setIcon(new UITexture(Identifier.of("better_main_menu", "textures/gui/settings.png")));
 		settings.setTooltip(Tooltip.of(Text.literal("Bmm Settings")));
 		settings.setOnClick(__ -> {
 			GuiUtils.showUrlPrompt("https://github.com/Mitzingdash", true);

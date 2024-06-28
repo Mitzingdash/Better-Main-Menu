@@ -1,7 +1,6 @@
 package mitzingdash.better_main_menu.client.gui.widget;
 
 import io.github.thecsdev.tcdcommons.api.client.gui.util.TDrawContext;
-import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TButtonWidget;
 import io.github.thecsdev.tcdcommons.api.util.annotations.Virtual;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
@@ -15,7 +14,7 @@ public class MButtonWidget extends TButtonWidget {
 		
 	}
 	
-	public static final Identifier BTN_WIDGET = new Identifier("better_main_menu", "textures/gui/widgets.png");
+	public static final Identifier BTN_WIDGET = Identifier.of("better_main_menu", "textures/gui/widgets.png");
 	
 	//TButtonWidget.java
 	public @Virtual @Override void render(TDrawContext pencil)

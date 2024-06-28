@@ -28,7 +28,6 @@
       "mitzingdash.better_main_menu.BetterMainMenu"
     ]
   },
-  "jars": [ { "file":"${project.mod_jar_tcdcommons}" } ],
   "depends": {
     "fabricloader": "*",
     "fabric": "*",
