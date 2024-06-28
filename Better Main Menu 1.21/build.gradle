@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'fabric-loom' version '1.6-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -27,7 +27,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 
-   	modApi(files("src/main/resources/${project.mod_jar_tcdcommons}"))
+   	modImplementation "curse.maven:tcdcommons-711539:5454426"
 
     modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
 
