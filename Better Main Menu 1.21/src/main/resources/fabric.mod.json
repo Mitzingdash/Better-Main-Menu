@@ -20,7 +20,7 @@
   "icon": "assets/better_main_menu/icon.png",
   "environment": "client",
   "entrypoints": {
-  	"modmenu": [ "mitzingdash.better_main_menu.client.gui.screen.BmmConfigScreen" ],
+  	"modmenu": [ "mitzingdash.better_main_menu.client.ModMenuImpl" ],
     "client": [
       "mitzingdash.better_main_menu.client.BetterMainMenuClient"
     ],

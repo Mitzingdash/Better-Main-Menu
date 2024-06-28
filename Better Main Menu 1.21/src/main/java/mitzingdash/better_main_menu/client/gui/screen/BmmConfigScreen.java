@@ -1,8 +1,5 @@
 package mitzingdash.better_main_menu.client.gui.screen;
 
-import com.terraformersmc.modmenu.api.ConfigScreenFactory;
-import com.terraformersmc.modmenu.api.ModMenuApi;
-
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TFillColorElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.panel.TPanelElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
@@ -10,14 +7,9 @@ import io.github.thecsdev.tcdcommons.api.client.util.interfaces.IParentScreenPro
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
-public class BmmConfigScreen extends TScreenPlus implements ModMenuApi, IParentScreenProvider {
+public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvider {
 
 	public Screen parent = null;
-	@Override
-	public ConfigScreenFactory<?> getModConfigScreenFactory() {
-		// TODO Auto-generated method stub
-		return parent -> new BmmConfigScreen(parent).getAsScreen();
-	}
 
 	public BmmConfigScreen(Screen parent) {
 		super(Text.translatable("narrator.screen.title"));
@@ -27,15 +19,16 @@ public class BmmConfigScreen extends TScreenPlus implements ModMenuApi, IParentS
 
 	@Override
 	protected void init() {
-		// TODO Auto-generated method stub
-		var contentPane = new TFillColorElement(10, 10, getWidth()-20, getHeight()-20);
-		addChild(contentPane);
-		
-		var panel = new TPanelElement(2, 2, getWidth()-4, getHeight()-4);
-		panel.setOutlineColor(0x44000000);
-		contentPane.addChild(panel);
+	    // TODO Auto-generated method stub
+	    var contentPane = new TFillColorElement(10, 10, getWidth()-20, getHeight()-20);
+	    contentPane.setColor(0x44808080);
+	    addChild(contentPane);
+	    
+	    var panel = new TPanelElement(1, 1, contentPane.getWidth()-2, contentPane.getHeight() - 2);
+	    panel.setOutlineColor(0xff1c1c1c);
+	    contentPane.addChild(panel);
 	}
-
+	
 	@Override
 	public Screen getParentScreen() {
 		// TODO Auto-generated method stub
