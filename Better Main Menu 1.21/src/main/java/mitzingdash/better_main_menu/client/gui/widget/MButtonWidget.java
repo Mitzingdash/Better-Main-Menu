@@ -21,7 +21,7 @@ public class MButtonWidget extends TButtonWidget {
 	{
 		if (isFocusedOrHovered()) pencil.drawTNineSlicedTexture(BTN_WIDGET, 0, 86, 200, 20, 5);
 		else pencil.drawTNineSlicedTexture(BTN_WIDGET, 0, 66, 200, 20, 5);
-		renderBackground(pencil);
+		this.renderIcon(pencil);
 		pencil.enableScissor(getX(), getY(), getEndX(), getEndY());
 		pencil.drawTElementTextTH(this.text, HorizontalAlignment.CENTER);
 		pencil.disableScissor();
