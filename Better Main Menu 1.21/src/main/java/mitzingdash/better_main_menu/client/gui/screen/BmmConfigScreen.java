@@ -44,15 +44,15 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    optionsNavPanelPane.setColor(0x77000000);
 	    contentPane.addChild(optionsNavPanelPane, false);
 	    
-	    var optionsTitleHousing = new TPanelElement(1, 1, optionsNavPanelPane.getWidth()-2, optionsNavPanelPane.getHeight() - 2);
+	    var optionsTitleHousing = new TPanelElement(1, 1, optionsNavPanelPane.getWidth() -2, 20);
 	    optionsTitleHousing.setOutlineColor(0xff808080);
 	    optionsTitleHousing.setBackgroundColor(0x00000000);
 	    optionsNavPanelPane.addChild(optionsTitleHousing);
 
-	    var optionsNavPanel = new TPanelElement(0, 20, optionsNavPanelPane.getWidth(), optionsNavPanelPane.getHeight()-20);
+	    var optionsNavPanel = new TPanelElement(1, 20, optionsNavPanelPane.getWidth() - 2, optionsNavPanelPane.getHeight()-21);
 	    optionsNavPanel.setOutlineColor(0xff808080);
 	    optionsNavPanel.setBackgroundColor(0x00000000);
-	    optionsTitleHousing.addChild(optionsNavPanel);
+		optionsNavPanelPane.addChild(optionsNavPanel);
 
 		//credits panel
 		var creditsPanelPane = new TFillColorElement(
@@ -61,7 +61,12 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		creditsPanelPane.setColor(0x77000000);
 		contentPane.addChild(creditsPanelPane, false);
 
-		var creditsHousePanel = new TPanelElement(1, 1, creditsPanelPane.getWidth()-2, creditsPanelPane.getHeight() - 2);
+		var creditsTitlePanel = new TPanelElement(1, 1, creditsPanelPane.getWidth() -2, 20);
+		creditsTitlePanel.setOutlineColor(0xff808080);
+		creditsTitlePanel.setBackgroundColor(0x00000000);
+		creditsPanelPane.addChild(creditsTitlePanel);
+
+		var creditsHousePanel = new TPanelElement(1, 20, creditsPanelPane.getWidth()-2, creditsPanelPane.getHeight() - 21);
 		creditsHousePanel.setOutlineColor(0xff808080);
 		creditsHousePanel.setBackgroundColor(0x00000000);
 		creditsPanelPane.addChild(creditsHousePanel);
@@ -73,6 +78,13 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    mainTittle.setTextColor(0xffffffff);
 	    mainTittle.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
 	    optionsTitleHousing.addChild(mainTittle);
+
+		//Credits Children
+		var creditsTitle = new TLabelElement(creditsHousePanel.getWidth()/2-50, 7, 100, 10);
+		creditsTitle.setText(Text.literal("Credits"));
+		creditsTitle.setTextColor(0xffffffff);
+		creditsTitle.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
+		creditsTitlePanel.addChild(creditsTitle);
 	}
 
 	@Override
