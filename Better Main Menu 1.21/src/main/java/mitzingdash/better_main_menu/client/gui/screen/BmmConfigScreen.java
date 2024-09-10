@@ -82,19 +82,21 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    mainTittle.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
 	    optionsTitleHousing.addChild(mainTittle);
 
-		final var debugMode = new TCheckboxWidget(10, 5, optionsNavPanel.getWidth() - 15, 20);
+		final var debugMode = new TCheckboxWidget(10, 5, optionsNavPanel.getWidth() - 15, (int) (optionsNavPanel.getHeight()*0.2));
 		debugMode.setText(Text.literal("Debug Mode"));
 		debugMode.setHorizontalAlignment(HorizontalAlignment.LEFT, HorizontalAlignment.RIGHT);
 		debugMode.setChecked(config.debug);
 		debugMode.setEnabled(true);
 		optionsNavPanel.addChild(debugMode);
 
-		var saveButton = new MButtonWidget(5, optionsNavPanel.getEndY() - 5, 50, 20);
+		var saveButton = new MButtonWidget(5, optionsNavPanel.getHeight() - 25, optionsNavPanel.getWidth() / 2 - 10, (int) (optionsNavPanel.getHeight()*0.2));
 		saveButton.setText(Text.literal("Done"));
 		saveButton.setOnClick(__ -> {
 			config.debug = debugMode.getChecked();
 			config.saveToFileOrCrash(true);
+			close();
 		});
+		optionsNavPanel.addChild(saveButton);
 
 		//Credits Children
 		var creditsTitle = new TLabelElement(creditsHousePanel.getWidth()/2-50, 7, 100, 10);
