@@ -4,8 +4,11 @@ import io.github.thecsdev.tcdcommons.api.client.gui.other.TFillColorElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TLabelElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.panel.TPanelElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
+import io.github.thecsdev.tcdcommons.api.client.gui.widget.TCheckboxWidget;
 import io.github.thecsdev.tcdcommons.api.client.util.interfaces.IParentScreenProvider;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
+import mitzingdash.better_main_menu.BetterMainMenu;
+import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
@@ -22,7 +25,7 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	@Override
 	protected void init()
 	{
-	    // TODO Auto-generated method stub
+		final var config = BetterMainMenu.CONFIG;
 	    var contentPane = new TFillColorElement(10, 10, getWidth()-20, getHeight()-20);
 	    contentPane.setColor(0x00000000);
 	    addChild(contentPane);
@@ -78,6 +81,20 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    mainTittle.setTextColor(0xffffffff);
 	    mainTittle.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
 	    optionsTitleHousing.addChild(mainTittle);
+
+		final var debugMode = new TCheckboxWidget(10, 5, optionsNavPanel.getWidth() - 15, 20);
+		debugMode.setText(Text.literal("Debug Mode"));
+		debugMode.setHorizontalAlignment(HorizontalAlignment.LEFT, HorizontalAlignment.RIGHT);
+		debugMode.setChecked(config.debug);
+		debugMode.setEnabled(true);
+		optionsNavPanel.addChild(debugMode);
+
+		var saveButton = new MButtonWidget(5, optionsNavPanel.getEndY() - 5, 50, 20);
+		saveButton.setText(Text.literal("Done"));
+		saveButton.setOnClick(__ -> {
+			config.debug = debugMode.getChecked();
+			config.saveToFileOrCrash(true);
+		});
 
 		//Credits Children
 		var creditsTitle = new TLabelElement(creditsHousePanel.getWidth()/2-50, 7, 100, 10);
