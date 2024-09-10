@@ -1,16 +1,24 @@
 package mitzingdash.better_main_menu.client.gui.screen;
 
+import io.github.thecsdev.tcdcommons.api.client.gui.other.TBlankElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TFillColorElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.other.TLabelElement;
+import io.github.thecsdev.tcdcommons.api.client.gui.other.TTextureElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.panel.TPanelElement;
 import io.github.thecsdev.tcdcommons.api.client.gui.screen.TScreenPlus;
+import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TCheckboxWidget;
+import io.github.thecsdev.tcdcommons.api.client.gui.widget.TScrollBarWidget;
 import io.github.thecsdev.tcdcommons.api.client.util.interfaces.IParentScreenProvider;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
 import mitzingdash.better_main_menu.BetterMainMenu;
+import mitzingdash.better_main_menu.client.gui.widget.MBlankElement;
 import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
+
+import javax.swing.*;
 
 public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvider {
 
@@ -72,7 +80,11 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		var creditsHousePanel = new TPanelElement(1, 20, creditsPanelPane.getWidth()-2, creditsPanelPane.getHeight() - 21);
 		creditsHousePanel.setOutlineColor(0xff808080);
 		creditsHousePanel.setBackgroundColor(0x00000000);
+		creditsHousePanel.setScrollFlags(TPanelElement.SCROLL_VERTICAL);
 		creditsPanelPane.addChild(creditsHousePanel);
+
+		var creditsPanelScrollBar = new TScrollBarWidget(creditsHousePanel.getEndX() - 5, 20, 10, creditsHousePanel.getHeight(), creditsHousePanel);
+		creditsPanelPane.addChild(creditsPanelScrollBar);
 
 
 		//Option Nav Children
@@ -111,6 +123,24 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		creditsTitle.setTextColor(0xffffffff);
 		creditsTitle.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
 		creditsTitlePanel.addChild(creditsTitle);
+
+		//Mitzing
+		var mitzing = new MBlankElement(3, 5, creditsHousePanel.getWidth() - 6, 80);
+		mitzing.setBorderColor(0xff808080);
+		creditsHousePanel.addChild(mitzing);
+
+		var mitIco = new TTextureElement(3, 3, 30, 30);
+		mitIco.setTexture(new UITexture(Identifier.of("better_main_menu", "textures/gui/icons/mit.png")));
+		mitzing.addChild(mitIco);
+
+		//Dave
+		var csDave = new MBlankElement(3, 90, creditsHousePanel.getWidth() - 6, 80);
+		csDave.setBorderColor(0xff808080);
+		creditsHousePanel.addChild(csDave);
+
+		var daveIco = new TTextureElement(3, 3, 30, 30);
+		daveIco.setTexture(new UITexture(Identifier.of("better_main_menu", "textures/gui/icons/thecsdev.png")));
+		csDave.addChild(daveIco);
 	}
 
 	@Override
