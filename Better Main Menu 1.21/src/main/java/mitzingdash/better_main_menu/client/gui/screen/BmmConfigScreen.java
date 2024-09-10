@@ -31,6 +31,11 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    var generalContentPane = new TFillColorElement(0, 0, (int) (contentPane.getWidth()*0.7), contentPane.getHeight());
 	    generalContentPane.setColor(0x77000000);
 	    contentPane.addChild(generalContentPane);
+
+	    var generalPanel = new TPanelElement(1, 1, generalContentPane.getWidth()-2, generalContentPane.getHeight() - 2);
+	    generalPanel.setOutlineColor(0xff808080);
+	    generalPanel.setBackgroundColor(0x00000000);
+	    generalContentPane.addChild(generalPanel);
 	    
 	    // options screen select
 	    var optionsNavPanelPane = new TFillColorElement(
@@ -43,19 +48,20 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    optionsTitleHousing.setOutlineColor(0xff808080);
 	    optionsTitleHousing.setBackgroundColor(0x00000000);
 	    optionsNavPanelPane.addChild(optionsTitleHousing);
-	    
+
+	    var optionsNavPanel = new TPanelElement(0, 20, optionsNavPanelPane.getWidth(), optionsNavPanelPane.getHeight()-20);
+	    optionsNavPanel.setOutlineColor(0xff808080);
+	    optionsNavPanel.setBackgroundColor(0x00000000);
+	    optionsTitleHousing.addChild(optionsNavPanel);
+
+		//Option Nav Children
 	    var mainTittle = new TLabelElement(optionsTitleHousing.getWidth()/2-50, 7, 100, 10);
 	    mainTittle.setText(getTitle());
 	    mainTittle.setTextColor(0xffffffff);
 	    mainTittle.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
 	    optionsTitleHousing.addChild(mainTittle);
-	    
-	    var optionsNavPanel = new TPanelElement(0, 20, optionsNavPanelPane.getWidth(), optionsNavPanelPane.getHeight()-20);
-	    optionsNavPanel.setOutlineColor(0xff808080);
-	    optionsNavPanel.setBackgroundColor(0x00000000);
-	    optionsTitleHousing.addChild(optionsNavPanel);
 	}
-	
+
 	@Override
 	public Screen getParentScreen() {
 		// TODO Auto-generated method stub
