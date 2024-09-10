@@ -129,18 +129,37 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		mitzing.setBorderColor(0xff808080);
 		creditsHousePanel.addChild(mitzing);
 
-		var mitIco = new TTextureElement(3, 3, 30, 30);
+		var mitNamePane = new MBlankElement(0, 0, mitzing.getWidth(), mitzing.getHeight() / 2);
+		mitNamePane.setBorderColor(0xff808080);
+		mitzing.addChild(mitNamePane);
+
+		var mitIco = new TTextureElement(3, 3, 35, 35);
 		mitIco.setTexture(new UITexture(Identifier.of("better_main_menu", "textures/gui/icons/mit.png")));
-		mitzing.addChild(mitIco);
+		mitNamePane.addChild(mitIco);
+
+		var mitName = new TLabelElement(mitIco.getEndX(), mitIco.getY(), mitNamePane.getWidth() - 40, 20);
+		mitName.setText(Text.literal("Mitzingdash"));
+		mitName.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
+		mitNamePane.addChild(mitName, false);
+
+		var mitDes = new TLabelElement(mitIco.getEndX(), mitIco.getY() + 15, mitNamePane.getWidth() - 40, 20);
+		mitDes.setText(Text.literal("Lead Dev"));
+		mitDes.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
+		mitDes.setTextColor(0xff535353);
+		mitNamePane.addChild(mitDes, false);
 
 		//Dave
 		var csDave = new MBlankElement(3, 90, creditsHousePanel.getWidth() - 6, 80);
 		csDave.setBorderColor(0xff808080);
 		creditsHousePanel.addChild(csDave);
 
+		var daveNamePane = new MBlankElement(0, 0, csDave.getWidth(), csDave.getHeight() / 2);
+		daveNamePane.setBorderColor(0xff808080);
+		csDave.addChild(daveNamePane);
+
 		var daveIco = new TTextureElement(3, 3, 30, 30);
 		daveIco.setTexture(new UITexture(Identifier.of("better_main_menu", "textures/gui/icons/thecsdev.png")));
-		csDave.addChild(daveIco);
+		daveNamePane.addChild(daveIco);
 	}
 
 	@Override
