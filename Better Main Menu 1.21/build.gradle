@@ -27,7 +27,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 
-   	modImplementation "curse.maven:tcdcommons-711539:5454426"
+    modImplementation "curse.maven:tcdcommons-711539:5604695"
 
     modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
 
