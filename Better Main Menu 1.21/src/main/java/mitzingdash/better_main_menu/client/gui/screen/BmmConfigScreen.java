@@ -54,6 +54,19 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    optionsNavPanel.setBackgroundColor(0x00000000);
 	    optionsTitleHousing.addChild(optionsNavPanel);
 
+		//credits panel
+		var creditsPanelPane = new TFillColorElement(
+			optionsNavPanelPane.getX(), optionsNavPanelPane.getEndY() + 5,
+			optionsNavPanelPane.getWidth(), generalContentPane.getHeight() - optionsNavPanelPane.getHeight() - 5);
+		creditsPanelPane.setColor(0x77000000);
+		contentPane.addChild(creditsPanelPane, false);
+
+		var creditsHousePanel = new TPanelElement(1, 1, creditsPanelPane.getWidth()-2, creditsPanelPane.getHeight() - 2);
+		creditsHousePanel.setOutlineColor(0xff808080);
+		creditsHousePanel.setBackgroundColor(0x00000000);
+		creditsPanelPane.addChild(creditsHousePanel);
+
+
 		//Option Nav Children
 	    var mainTittle = new TLabelElement(optionsTitleHousing.getWidth()/2-50, 7, 100, 10);
 	    mainTittle.setText(getTitle());
