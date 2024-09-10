@@ -82,14 +82,14 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 	    mainTittle.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
 	    optionsTitleHousing.addChild(mainTittle);
 
-		final var debugMode = new TCheckboxWidget(10, 5, optionsNavPanel.getWidth() - 15, (int) (optionsNavPanel.getHeight()*0.2));
+		final var debugMode = new TCheckboxWidget(10, 5, optionsNavPanel.getWidth() - 15, 20);
 		debugMode.setText(Text.literal("Debug Mode"));
 		debugMode.setHorizontalAlignment(HorizontalAlignment.LEFT, HorizontalAlignment.RIGHT);
 		debugMode.setChecked(config.debug);
 		debugMode.setEnabled(true);
 		optionsNavPanel.addChild(debugMode);
 
-		var saveButton = new MButtonWidget(5, optionsNavPanel.getHeight() - 25, optionsNavPanel.getWidth() / 2 - 10, (int) (optionsNavPanel.getHeight()*0.2));
+		var saveButton = new MButtonWidget(5, optionsNavPanel.getHeight() - 35, (int) ((double) optionsNavPanel.getWidth() / 2 - 7.5), 30);
 		saveButton.setText(Text.literal("Done"));
 		saveButton.setOnClick(__ -> {
 			config.debug = debugMode.getChecked();
@@ -97,6 +97,13 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 			close();
 		});
 		optionsNavPanel.addChild(saveButton);
+
+		var cancelButton = new MButtonWidget((int) (saveButton.getEndX() + 7.5), saveButton.getY(), optionsNavPanel.getWidth() / 2 - 10, 30);
+		cancelButton.setText(Text.literal("Cancel"));
+		cancelButton.setOnClick(__ ->{
+			close();
+		});
+		optionsNavPanel.addChild(cancelButton, false);
 
 		//Credits Children
 		var creditsTitle = new TLabelElement(creditsHousePanel.getWidth()/2-50, 7, 100, 10);
