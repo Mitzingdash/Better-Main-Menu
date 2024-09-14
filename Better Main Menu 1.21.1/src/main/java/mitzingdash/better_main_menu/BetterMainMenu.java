@@ -4,6 +4,8 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+
 
 public class BetterMainMenu implements ModInitializer {
     // This logger is used to write text to the console and the log file.
@@ -20,6 +22,13 @@ public class BetterMainMenu implements ModInitializer {
         // Proceed with mild caution.
 
     	CONFIG.loadFromFileOrCrash(true);
+
+        new File(System.getProperty("user.dir") + "/config/BMMImages").mkdirs();
+        new File(System.getProperty("user.dir") + "/config/BMMImages/Icon").mkdirs();
+        new File(System.getProperty("user.dir") + "/config/BMMImages/Background").mkdirs();
+
+        if(CONFIG.debug)
+            LOGGER.info(System.getProperty("user.dir"));
 
     }
 
