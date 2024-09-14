@@ -10,6 +10,7 @@ import io.github.thecsdev.tcdcommons.api.client.gui.util.GuiUtils;
 import io.github.thecsdev.tcdcommons.api.client.gui.util.UITexture;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TCheckboxWidget;
 import io.github.thecsdev.tcdcommons.api.client.gui.widget.TScrollBarWidget;
+import io.github.thecsdev.tcdcommons.api.client.gui.widget.TSelectWidget;
 import io.github.thecsdev.tcdcommons.api.client.util.interfaces.IParentScreenProvider;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
 import mitzingdash.better_main_menu.BetterMainMenu;
@@ -38,7 +39,7 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		contentPane.setColor(0x00000000);
 		addChild(contentPane);
 
-		// main box
+		// options
 		var generalContentPane = new TFillColorElement(0, 0, (int) (contentPane.getWidth() * 0.7), contentPane.getHeight());
 		generalContentPane.setColor(0x77000000);
 		contentPane.addChild(generalContentPane);
@@ -100,6 +101,20 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		debugMode.setChecked(config.debug);
 		debugMode.setEnabled(true);
 		optionsNavPanel.addChild(debugMode);
+
+		var OptionsSelectWidget = new TSelectWidget<TSelectWidget.SimpleEntry>(5, 30, optionsNavPanel.getWidth() - 10, 20);
+		TSelectWidget.SimpleEntry DefaulOptionsEntry = new TSelectWidget.SimpleEntry(Text.literal("General"), ()->{
+
+		});
+		OptionsSelectWidget.addEntry(DefaulOptionsEntry);
+		OptionsSelectWidget.addEntry(new TSelectWidget.SimpleEntry(Text.literal("Icon"), ()->{
+
+		}));
+		OptionsSelectWidget.addEntry(new TSelectWidget.SimpleEntry(Text.literal("Background"), ()->{
+
+		}));
+		OptionsSelectWidget.setSelected(DefaulOptionsEntry);
+		optionsNavPanel.addChild(OptionsSelectWidget);
 
 		var saveButton = new MButtonWidget(5, optionsNavPanel.getHeight() - 35, (int) ((double) optionsNavPanel.getWidth() / 2 - 7.5), 30);
 		saveButton.setText(Text.literal("Done"));
