@@ -17,6 +17,7 @@ import mitzingdash.better_main_menu.BetterMainMenu;
 import mitzingdash.better_main_menu.client.gui.widget.MBlankElement;
 import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -100,35 +101,38 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		debugMode.setHorizontalAlignment(HorizontalAlignment.LEFT, HorizontalAlignment.RIGHT);
 		debugMode.setChecked(config.debug);
 		debugMode.setEnabled(true);
+		debugMode.setOnClick(__ ->{
+			config.debug = debugMode.getChecked();
+		});
 		optionsNavPanel.addChild(debugMode);
 
 		var OptionsSelectWidget = new TSelectWidget<TSelectWidget.SimpleEntry>(5, 30, optionsNavPanel.getWidth() - 10, 20);
-		TSelectWidget.SimpleEntry DefaulOptionsEntry = new TSelectWidget.SimpleEntry(Text.literal("General"), ()->{
-
+		TSelectWidget.SimpleEntry DefaultOptionsEntry = new TSelectWidget.SimpleEntry(Text.literal("General"), ()->{
+			innitGenSettings(generalPanel);
 		});
-		OptionsSelectWidget.addEntry(DefaulOptionsEntry);
+		OptionsSelectWidget.addEntry(DefaultOptionsEntry);
 		OptionsSelectWidget.addEntry(new TSelectWidget.SimpleEntry(Text.literal("Icon"), ()->{
-
+			innitIconSettings(generalPanel);
 		}));
 		OptionsSelectWidget.addEntry(new TSelectWidget.SimpleEntry(Text.literal("Background"), ()->{
-
+			innitBackgroundSettings(generalPanel);
 		}));
-		OptionsSelectWidget.setSelected(DefaulOptionsEntry);
+		OptionsSelectWidget.setSelected(DefaultOptionsEntry);
 		optionsNavPanel.addChild(OptionsSelectWidget);
 
 		var saveButton = new MButtonWidget(5, optionsNavPanel.getHeight() - 35, (int) ((double) optionsNavPanel.getWidth() / 2 - 7.5), 30);
 		saveButton.setText(Text.literal("Done"));
 		saveButton.setOnClick(__ -> {
-			config.debug = debugMode.getChecked();
-			config.saveToFileOrCrash(true);
-			close();
+			config.saveToFileOrCrash(config.debug);
+			getClient().setScreen(this.parent);
 		});
 		optionsNavPanel.addChild(saveButton);
 
 		var cancelButton = new MButtonWidget((int) (saveButton.getEndX() + 7.5), saveButton.getY(), optionsNavPanel.getWidth() / 2 - 10, 30);
 		cancelButton.setText(Text.literal("Cancel"));
 		cancelButton.setOnClick(__ -> {
-			close();
+			config.loadFromFileOrCrash(config.debug);
+			getClient().setScreen(this.parent);
 		});
 		optionsNavPanel.addChild(cancelButton, false);
 
@@ -288,6 +292,47 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 
 	}
 
+	public void innitGenSettings(TPanelElement panel) {
+		panel.clearChildren();
+		final var config = BetterMainMenu.CONFIG;
+		var customButtons = new TCheckboxWidget(10, 5, panel.getWidth() - 15, 20);
+		customButtons.setText(Text.literal("Custom Buttons"));
+		customButtons.setHorizontalAlignment(HorizontalAlignment.LEFT, HorizontalAlignment.RIGHT);
+		customButtons.setChecked(config.buttons);
+		customButtons.setEnabled(true);
+		customButtons.setOnClick(__ ->{
+			config.buttons = customButtons.getChecked();
+		});
+		panel.addChild(customButtons);
+
+		var imageBackground = new TCheckboxWidget(10, 30, panel.getWidth() - 15, 20);
+		imageBackground.setText(Text.literal("Image Background"));
+		imageBackground.setTooltip(Tooltip.of(Text.literal("If unchecked this will set the background to default panoramic background of minecraft")));
+		imageBackground.setHorizontalAlignment(HorizontalAlignment.LEFT, HorizontalAlignment.RIGHT);
+		imageBackground.setChecked(config.background);
+		imageBackground.setEnabled(true);
+		imageBackground.setOnClick(__ ->{
+			config.background = imageBackground.getChecked();
+		});
+		panel.addChild(imageBackground);
+	}
+
+	public void innitIconSettings(TPanelElement panel) {
+		panel.clearChildren();
+		var test = new TLabelElement(0, 0, panel.getWidth(), 15);
+		test.setText(Text.literal("Icon Settings"));
+		test.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
+		panel.addChild(test);
+	}
+
+	public void innitBackgroundSettings(TPanelElement panel) {
+		panel.clearChildren();
+		var test = new TLabelElement(0, 0, panel.getWidth(), 15);
+		test.setText(Text.literal("Background Settings"));
+		test.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
+		panel.addChild(test);
+	}
+
 	@Override
 	public Screen getParentScreen() {
 		// TODO Auto-generated method stub
@@ -296,7 +341,7 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 
 	@Override
 	public void close() {
-		getClient().setScreen(this.parent);
+
 	}
 
 }

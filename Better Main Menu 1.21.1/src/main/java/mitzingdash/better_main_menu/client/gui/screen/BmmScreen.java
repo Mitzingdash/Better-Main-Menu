@@ -14,9 +14,14 @@ import io.github.thecsdev.tcdcommons.api.util.enumerations.Axis2D;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.HorizontalAlignment;
 import io.github.thecsdev.tcdcommons.api.util.enumerations.VerticalAlignment;
 import mitzingdash.better_main_menu.BetterMainMenu;
+import mitzingdash.better_main_menu.BetterMainMenuConfig;
 import mitzingdash.better_main_menu.client.gui.widget.CreditButtonWidget;
 import mitzingdash.better_main_menu.client.gui.widget.MButtonWidget;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.gui.CubeMapRenderer;
+import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.RotatingCubeMapRenderer;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
 import net.minecraft.client.gui.screen.option.AccessibilityOptionsScreen;
@@ -33,6 +38,7 @@ import net.minecraft.util.Identifier;
 public class BmmScreen extends TScreenPlus {
 
 	public UITexture TEX_BACKGROUND = null;
+	public static BetterMainMenuConfig CONFIG = BetterMainMenu.CONFIG;
 	
 	public BmmScreen() {
 		super(Text.translatable("narrator.screen.title"));
@@ -144,11 +150,21 @@ public class BmmScreen extends TScreenPlus {
 		
 	}
 
+	protected static final CubeMapRenderer PANORAMA_RENDERER = new CubeMapRenderer(Identifier.ofVanilla("textures/gui/title/background/panorama"));
+	protected static final RotatingCubeMapRenderer ROTATING_PANORAMA_RENDERER = new RotatingCubeMapRenderer(PANORAMA_RENDERER);
+
 	@Override
 	public void renderBackground(TDrawContext pencil) {
 		// TODO Auto-generated method stub
-		if (TEX_BACKGROUND == null) return;
-		TEX_BACKGROUND.drawTexture(pencil, 0, 0, getWidth(), getHeight());
+		if(CONFIG.background) {
+			if (TEX_BACKGROUND == null) return;
+			TEX_BACKGROUND.drawTexture(pencil, 0, 0, getWidth(), getHeight());
+		}
+		else this.renderPanoramaBackground(pencil);
+	}
+
+	protected void renderPanoramaBackground(TDrawContext pencil) {
+		ROTATING_PANORAMA_RENDERER.render(pencil, getWidth(), getHeight(), 1, pencil.deltaTime);
 	}
 	
 	
