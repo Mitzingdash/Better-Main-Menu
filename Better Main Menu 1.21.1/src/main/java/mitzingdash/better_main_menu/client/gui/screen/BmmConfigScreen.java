@@ -112,7 +112,7 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		});
 		OptionsSelectWidget.addEntry(DefaultOptionsEntry);
 		OptionsSelectWidget.addEntry(new TSelectWidget.SimpleEntry(Text.literal("Icon"), ()->{
-			innitIconSettings(generalPanel);
+			innitLogoSettings(generalPanel);
 		}));
 		OptionsSelectWidget.addEntry(new TSelectWidget.SimpleEntry(Text.literal("Background"), ()->{
 			innitBackgroundSettings(generalPanel);
@@ -317,12 +317,9 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		panel.addChild(imageBackground);
 	}
 
-	public void innitIconSettings(TPanelElement panel) {
+	public void innitLogoSettings(TPanelElement panel) {
 		panel.clearChildren();
-		var test = new TLabelElement(0, 0, panel.getWidth(), 15);
-		test.setText(Text.literal("Icon Settings"));
-		test.setTextHorizontalAlignment(HorizontalAlignment.CENTER);
-		panel.addChild(test);
+		
 	}
 
 	public void innitBackgroundSettings(TPanelElement panel) {
@@ -333,15 +330,7 @@ public class BmmConfigScreen extends TScreenPlus implements IParentScreenProvide
 		panel.addChild(test);
 	}
 
-	@Override
-	public Screen getParentScreen() {
-		// TODO Auto-generated method stub
-		return this.parent;
-	}
-
-	@Override
-	public void close() {
-
-	}
+	public @Override Screen getParentScreen() { return this.parent; }
+	public @Override void close() {}
 
 }

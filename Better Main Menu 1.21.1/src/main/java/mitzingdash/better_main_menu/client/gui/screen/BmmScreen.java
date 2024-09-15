@@ -139,15 +139,6 @@ public class BmmScreen extends TScreenPlus {
 		var txt_social = new TLabelElement(5, getHeight()-20, 50, 5, Text.literal("Not affiliated with MOJANG").formatted(Formatting.GOLD));
 		addChild(txt_social);
 		
-		var settings = new MButtonWidget(5, getHeight()-45, 20, 20);
-		settings.setIcon(new UITexture(Identifier.of("better_main_menu", "textures/gui/settings.png")));
-		settings.setTooltip(Tooltip.of(Text.literal("Bmm Settings")));
-		settings.setOnClick(__ -> {
-			GuiUtils.showUrlPrompt("https://github.com/Mitzingdash", true);
-		});
-		//addChild(settings);
-		
-		
 	}
 
 	protected static final CubeMapRenderer PANORAMA_RENDERER = new CubeMapRenderer(Identifier.ofVanilla("textures/gui/title/background/panorama"));
