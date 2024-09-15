@@ -11,8 +11,8 @@ public class BetterMainMenuConfig extends AutoConfig {
 		super("BMMSettings");
 	}
 
-	public @SerializedAs("background-texture-id") String btid = "better_main_menu:textures/gui/backgrounds/valley.png";
-	public @SerializedAs("main-icon") String logo = "better_main_menu:textures/gui/icons/logo.png";
+	public @SerializedAs("background-image") String backgroundimage = "better_main_menu:textures/gui/backgrounds/valley.png";
+	public @SerializedAs("logo-image") String logo = "better_main_menu:textures/gui/icons/logo.png";
 	public @SerializedAs("debug-mode") boolean debug = false;
 	public @SerializedAs("custom-buttons") boolean buttons = true;
 	public @SerializedAs("image-background") boolean background = true;
